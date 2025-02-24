@@ -11,3 +11,16 @@ func union<Element: Hashable>(of collections: some Collection<some Collection<El
         
     return out
 }
+
+func intersection<Element: Hashable>(of collections: some Collection<some Collection<Element>>) -> Set<Element> {
+      
+    guard let first = collections.first else { return Set() }
+    
+    var out = Set(first)
+    
+    for collection in collections {
+        out = out.intersection(collection)
+    }
+        
+    return out
+}
