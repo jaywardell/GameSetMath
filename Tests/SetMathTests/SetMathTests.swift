@@ -90,5 +90,17 @@ struct intersection_method {
         #expect(found == Set(expected))
     }
 
+    @Test("if one collection is empty, then returns an empty set")
+    func example_one_empty() async throws {
+        let data: [[String]] = [
+            ["a", "b"],
+            ["c", "d"],
+            []
+        ]
+
+        let found = intersection(of: data)
+        #expect(found.isEmpty)
+    }
+
 }
 
