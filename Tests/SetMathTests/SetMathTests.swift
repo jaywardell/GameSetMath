@@ -11,20 +11,29 @@ struct union_method {
         #expect(union(of: data).isEmpty)
     }
 
-    @Test("if two collections have nothing in common, returns empty set")
+    @Test("returns all members of all collections")
     func example_two_disjoint() async throws {
         let data: [[String]] = [
             ["a", "b"],
             ["c", "d"]
         ]
         
-        #expect(union(of: data).isEmpty)
+        #expect(union(of: data) == Set(["a", "b", "c", "d"]))
     }
     
     @Test("if set has one collection, returns that collection")
     func example_single_collection() async throws {
         let expected = ["a", "b"]
         let data = [expected]
+        
+        let found = union(of: data)
+        #expect(found == Set(expected))
+    }
+
+    @Test("if set has two equivalent collections, returns the elements of the collections")
+    func example_duplicate_collections() async throws {
+        let expected = ["a", "b"]
+        let data = [expected, expected]
         
         let found = union(of: data)
         #expect(found == Set(expected))

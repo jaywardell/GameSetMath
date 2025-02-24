@@ -2,11 +2,12 @@
 // https://docs.swift.org/swift-book
 
 func union<Element: Hashable>(of collections: some Collection<some Collection<Element>>) -> Set<Element> {
+  
+    var out = Set<Element>()
     
-    if collections.count == 1,
-       let first = collections.first {
-        return Set(first)
+    for collection in collections {
+        out = out.union(collection)
     }
-    
-    return []
+        
+    return out
 }
