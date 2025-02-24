@@ -20,4 +20,14 @@ struct union_method {
         
         #expect(union(of: data).isEmpty)
     }
+    
+    @Test("if set has one collection, returns that collection")
+    func example_single_collection() async throws {
+        let expected = [["a", "b"]]
+        let data = [expected]
+        
+        let found = union(of: data)
+        #expect(found == expected)
+    }
+
 }
