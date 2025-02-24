@@ -1,7 +1,7 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-func union<Element: Hashable>(of collections: some Collection<some Collection<Element>>) -> Set<Element> {
+public func union<Element: Hashable>(of collections: some Collection<some Collection<Element>>) -> Set<Element> {
   
     var out = Set<Element>()
     
@@ -12,7 +12,7 @@ func union<Element: Hashable>(of collections: some Collection<some Collection<El
     return out
 }
 
-func intersection<Element: Hashable>(of collections: some Collection<some Collection<Element>>) -> Set<Element> {
+public func intersection<Element: Hashable>(of collections: some Collection<some Collection<Element>>) -> Set<Element> {
       
     guard let first = collections.first else { return Set() }
     
